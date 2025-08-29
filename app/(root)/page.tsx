@@ -1,7 +1,7 @@
 const Home = () => {
   return (
     <div className="flex-center h-screen">
-      <h1>Store it - The only storage you need.</h1>
+      <h1 className="text-brand">Store it - The only storage you need.</h1>
     </div>
   );
 };

@@ -4,6 +4,13 @@ type FormType = "sign-in" | "sign-up";
 
 declare type FileType = "document" | "image" | "video" | "audio" | "other";
 
+interface Props {
+  fullName: string;
+  avatar: string;
+  email: string;
+  ownerId?: string;
+  accountId?: string;
+}
 declare interface ActionType {
   label: string;
   icon: string;
