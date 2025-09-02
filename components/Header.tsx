@@ -3,14 +3,21 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import Search from "./Search";
 import FileUploader from "./FileUploader";
+import { signOutUser } from "@/lib/actions/user.actions";
 
-const Header = () => {
+const Header = ({ accountId, $id: userId }: HeaderProps) => {
   return (
     <header className="header overflow-hidden">
       <Search />
       <div className="header-wrapper flex-center">
-        <FileUploader />
-        <form>
+        <FileUploader accountId={accountId} ownerId={userId} />
+
+        <form
+          action={async () => {
+            "use server";
+            await signOutUser();
+          }}
+        >
           <Button type="submit" className="sign-out-button flex-center">
             <Image
               src="/assets/icons/logout.svg"

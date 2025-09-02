@@ -16,14 +16,14 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { createAccount } from "@/lib/actions/user.actions";
+import { createAccount, signInUser } from "@/lib/actions/user.actions";
 import OTPModal from "./OTPModal";
 
 const authFormSchema = (formType: FormType) => {
   return z.object({
     email: z.email(),
     fullName:
-      formType === "sign-in"
+      formType === "sign-up"
         ? z.string().min(2).max(50)
         : z.string().optional(),
   });
@@ -47,13 +47,17 @@ const AuthForm = ({ type }: { type: FormType }) => {
     setIsloading(true);
     setErrorMessage("");
     try {
-      const user = await createAccount({
-        fullName: values.fullName || "",
-        email: values.email,
-      });
+      const user =
+        type === "sign-up"
+          ? await createAccount({
+              fullName: values.fullName || "",
+              email: values.email,
+            })
+          : await signInUser({ email: values.email });
+
       setAccountId(user.accountId);
-    } catch (error) {
-      setErrorMessage("Failed to create account please try again");
+    } catch {
+      setErrorMessage("Failed to create account. Please try again.");
     } finally {
       setIsloading(false);
     }

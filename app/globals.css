@@ -383,6 +383,32 @@ body {
   .mobile-sign-out-button {
     @apply flex h-[52px] w-full items-center gap-4 rounded-full bg-brand/10 px-6 text-brand shadow-none transition-all hover:bg-brand/20;
   }
+  /* uploader styles */
+  .uploader-button {
+    @apply h-[52px] gap-2 px-10 shadow-drop-1;
+  }
+  .uploader-preview-list {
+    @apply fixed bottom-10 right-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white p-7 shadow-drop-3;
+  }
+  .uploader-preview-item {
+    @apply flex items-center justify-between  gap-3 rounded-xl p-3 shadow-drop-3;
+  }
+  .preview-item-name {
+    @apply mb-2 line-clamp-1 max-w-[300px];
+  }
+  /* Thumbnail */
+  .thumbnail {
+    @apply size-[50px] min-w-[50px] overflow-hidden rounded-full bg-brand/10;
+  }
+  .thumbnail-image {
+    @apply size-full object-cover object-center;
+  }
+  .error-toast {
+    @apply !bg-red !rounded-[10px];
+  }
+  .success-toast {
+    @apply !bg-green-500 !rounded-[10px];
+  }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

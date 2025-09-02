@@ -17,13 +17,14 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import FileUploader from "./FileUploader";
 import { Button } from "./ui/button";
+import { signOutUser } from "@/lib/actions/user.actions";
 const MobileNavigation = ({
-  ownerId,
+  $id: ownerId,
   avatar,
   email,
   fullName,
   accountId,
-}: Props) => {
+}: MobileNavigationProps) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   return (
@@ -33,7 +34,7 @@ const MobileNavigation = ({
         alt="logo"
         width={120}
         height={52}
-        className="h-auto"
+        className="h-auto w-auto"
       />
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
@@ -89,8 +90,12 @@ const MobileNavigation = ({
           </nav>
           <Separator className="my-5 bg-light-200/20" />
           <div className="flex flex-col justify-between gap-5 pb-5">
-            <FileUploader />
-            <Button type="submit" className="sign-out-button flex-center">
+            <FileUploader ownerId={ownerId} accountId={accountId} />
+            <Button
+              type="submit"
+              className="sign-out-button flex-center"
+              onClick={async () => signOutUser()}
+            >
               <Image
                 src="/assets/icons/logout.svg"
                 alt="logout"

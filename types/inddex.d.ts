@@ -8,8 +8,10 @@ interface Props {
   fullName: string;
   avatar: string;
   email: string;
-  ownerId?: string;
-  accountId?: string;
+}
+interface HeaderProps {
+  $id: string;
+  accountId: string;
 }
 declare interface ActionType {
   label: string;
@@ -58,7 +60,7 @@ declare interface FileUploaderProps {
 }
 
 declare interface MobileNavigationProps {
-  ownerId: string;
+  $id: string;
   accountId: string;
   fullName: string;
   avatar: string;

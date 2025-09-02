@@ -6,7 +6,8 @@ import { appwriteConfig } from "../appwrite/config";
 import { avatarPlaceholderUrl } from "@/constants";
 import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
-const getUserByEmail = async (email: string) => {
+import { redirect } from "next/navigation";
+export const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient();
 
   const result = await databases.listDocuments({
@@ -16,7 +17,7 @@ const getUserByEmail = async (email: string) => {
   });
   return result.total > 0 ? result.documents[0] : null;
 };
-const handleError = (error: unknown, message: string) => {
+export const handleError = async (error: unknown, message: string) => {
   console.log(error, message);
   throw error;
 };
@@ -89,4 +90,27 @@ export const getCurrentUser = async () => {
   );
   if (user.total === 0) throw new Error("User not found");
   return parseStringify(user.documents[0]);
+};
+export const signOutUser = async () => {
+  const { account } = await createSessionClient();
+  try {
+    await account.deleteSession("current");
+    (await cookies()).delete("appwrite-session");
+  } catch (error) {
+    console.log(error, "Failed to sign out");
+  } finally {
+    redirect("/sign-in");
+  }
+};
+export const signInUser = async ({ email }: { email: string }) => {
+  try {
+    const existingUser = await getUserByEmail(email);
+    if (existingUser) {
+      await sendEmailOTP({ email });
+      return parseStringify({ accountId: existingUser.accountId });
+    }
+    return parseStringify({ accountId: null, error: "User not found" });
+  } catch (error) {
+    console.log(error, "failed to sign in");
+  }
 };
