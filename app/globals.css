@@ -422,6 +422,12 @@ body {
   .sort-container {
     @apply mt-5 flex items-center sm:mt-0 sm:gap-3;
   }
+  .file-card {
+    @apply flex cursor-pointer flex-col gap-6 rounded-[18px] bg-white p-5 shadow-sm transition-all hover:shadow-drop-3;
+  }
+  .file-card-details {
+    @apply flex flex-col gap-2 text-light-100;
+  }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
