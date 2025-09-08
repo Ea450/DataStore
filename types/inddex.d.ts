@@ -4,6 +4,19 @@ type FormType = "sign-in" | "sign-up";
 
 declare type FileType = "document" | "image" | "video" | "audio" | "other";
 
+interface FileDocument {
+  name: string;
+  url: string;
+  type: string;
+  extension: string;
+  size: number;
+  ownerFullName: string;
+  $createdAt: string;
+  $id: string;
+  bucketFileId: string;
+  $updatedAt: string;
+  users: string[];
+}
 interface Props {
   fullName: string;
   avatar: string;
@@ -38,7 +51,7 @@ declare interface GetFilesProps {
 }
 declare interface RenameFileProps {
   fileId: string;
-  name: string;
+  fileName: string;
   extension: string;
   path: string;
 }

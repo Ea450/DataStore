@@ -7,7 +7,7 @@ import { signOutUser } from "@/lib/actions/user.actions";
 
 const Header = ({ accountId, $id: userId }: HeaderProps) => {
   return (
-    <header className="header overflow-hidden">
+    <header className="header">
       <Search />
       <div className="header-wrapper flex-center">
         <FileUploader accountId={accountId} ownerId={userId} />

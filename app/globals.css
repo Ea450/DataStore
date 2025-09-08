@@ -305,7 +305,7 @@ body {
     @apply absolute -right-1 -top-7 cursor-pointer sm:-right-2 sm:-top-4;
   }
   .main-content {
-    @apply h-full flex-1 overflow-auto bg-light-400 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10;
+    @apply h-full flex-1 bg-light-400 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10 -z-20;
   }
   /* Header */
   .header {
@@ -323,7 +323,7 @@ body {
     @apply relative w-full md:max-w-[480px];
   }
   .search-input-wrapper {
-    @apply flex h-[52px] flex-1 items-center gap-3 rounded-full px-4 shadow-drop-3;
+    @apply flex h-[52px] flex-1 items-center gap-3 rounded-full px-4 shadow-drop-3 relative;
   }
   .search-input {
     @apply w-full border-none p-0 shadow-none placeholder:text-light-200;
@@ -334,7 +334,6 @@ body {
   .empty-result {
     @apply text-center text-light-100;
   }
-
   /* Sidebar */
   .sidebar {
     @apply hidden h-screen w-[90px] flex-col overflow-auto px-5 py-7 sm:flex lg:w-[280px] xl:w-[325px];
@@ -427,6 +426,42 @@ body {
   }
   .file-card-details {
     @apply flex flex-col gap-2 text-light-100;
+  }
+  /* ActionsDropdown */
+  .rename-input-field {
+    @apply h-[52px] w-full rounded-full border px-4 shadow-drop-1;
+  }
+  .delete-confirmation {
+    @apply text-center text-light-100;
+  }
+  .delete-file-name {
+    @apply font-medium text-brand-100;
+  }
+  .modal-cancel-button {
+    @apply h-[52px] flex-1 rounded-full !bg-white !text-light-100 hover:bg-transparent;
+  }
+  .modal-submit-button {
+    @apply !mx-0 h-[52px] w-full flex-1;
+  }
+  /* ActionsModalContent */
+  .file-details-thumbnail {
+    @apply !mb-1 flex items-center gap-3 rounded-xl border border-light-200/40 bg-light-400/50 p-3;
+  }
+
+  .file-details-label {
+    @apply w-[30%] text-light-100;
+  }
+  .share-wrapper {
+    @apply !mt-2 space-y-2;
+  }
+  .share-input-field {
+    @apply h-[52px] w-full rounded-full border px-4 shadow-drop-1;
+  }
+  .share-remove-user {
+    @apply !rounded-full !bg-transparent !text-light-100 !shadow-none hover:!bg-transparent;
+  }
+  .remove-icon {
+    @apply aspect-square rounded-full;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
