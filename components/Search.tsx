@@ -29,7 +29,6 @@ const Search = () => {
       }
 
       const files = await getFiles({ types: [], searchText: debouncedQuery });
-      console.log("files from API:", files);
 
       setResults(files.documents || []); // ✅ no .documents
       setOpen(true);

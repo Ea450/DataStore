@@ -5,7 +5,7 @@ import FormattedDateTime from "@/components/FormattedDateTime";
 import ActionDropdown from "./ActionDropdown";
 const Card = ({ file }: { file: FileDocument }) => {
   return (
-    <Link href={file.url} target="_blank" className="file-card">
+    <Link href={file.url} target="_blank" className="file-card cursor-pointer">
       <div className="flex justify-between">
         <Thumbnail
           type={file.type}

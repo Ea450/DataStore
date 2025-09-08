@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { Toaster } from "@/components/ui/sonner";
 
+export const dynamic = "force-dynamic";
 const HomeLayout = async ({ children }: { children: React.ReactNode }) => {
   const currentUser = await getCurrentUser();
   if (!currentUser) redirect("/");
